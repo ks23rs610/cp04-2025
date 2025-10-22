@@ -33,6 +33,7 @@
         left:10px; right:10px;
         box-shadow: 5px 5px 5px gray;
         width: 50%;
+        margin: auto;
     }
     
     #mycanvas {
