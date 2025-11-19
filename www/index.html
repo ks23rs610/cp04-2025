@@ -185,13 +185,13 @@
     function btnAClick(e){
         active = true;
         startTime = new Date();
-        
+        $("#msg").html("スタート");
     }
 
     // ButtonBがクリックされた時の処理
     function btnBClick(e){
         active = false;
-        
+        $("#msg").html("ストップ");
     }
 
     // ButtonCがクリックされた時の処理
@@ -201,7 +201,7 @@
         period = 60*parseInt( $("#minute").val() ) + parseInt( $("#second").val() );
         $("#time").html("経過時間： 0");
         $("#remain").html("残り時間： " +period);
-        
+        $("#msg").html("セットしました");
     }
     
  
@@ -236,5 +236,6 @@
     <button id="btnC">Set</button>  
     <input type="number" id="minute" value=0 >
     <input type="number" id="second" value=15 >
+    <div id="msg"></div>
 </body>
 </html>
