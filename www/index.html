@@ -12,6 +12,12 @@
   <link rel="stylesheet" href="css/style.css">
   <style>
 
+       /* 画像を中央に表示 */
+  #growImg {
+    display: block;
+    margin: 550px auto;  /* ボタンとの間に余白 */
+  }
+
   </style>
   <script>
     // timer処理
@@ -203,6 +209,25 @@
         $("#remain").html("残り時間： " +period);
         $("#msg").html("セットしました");
     }
+
+
+    function updateImageSize(remain, maxTime) {
+    let startSize = 80;   // 初期サイズ
+    let endSize = 250;    // 最大サイズ
+
+    let progress = (maxTime - remain) / maxTime;
+    if (progress < 0) progress = 0;
+    if (progress > 1) progress = 1;
+
+    let nowSize = startSize + (endSize - startSize) * progress;
+
+    // HTML画像を取得
+    let img = document.getElementById("growImg");
+
+    // 拡大
+    img.style.width = nowSize + "px";
+    img.style.height = "auto";
+}
     
  
     // 繰り返し実行する処理
@@ -213,6 +238,10 @@
             $("#time").html("経過時間： " + etime);
             $("#remain").html("残り時間： " + rest);
             analog(rest);
+
+            // ★ 追加：拡大処理を呼ぶ
+            updateImageSize(rest, period);
+            
             if( rest <= 0){
                 active = false
                 alarm();
@@ -228,7 +257,7 @@
 
     <div id="minuteStr">〇</div>
     <div id="secondStr">〇</div>
-
+    
     <div id="remain">Remaining time</div>
     <div id="time">Time</div>
     <button id="btnA">Start</button>  
@@ -236,6 +265,9 @@
     <button id="btnC">Set</button>  
     <input type="number" id="minute" value=0 >
     <input type="number" id="second" value=15 >
+
+    <img id="growImg" src="ksuisbg.gif" style="width:80px;">
+
     <div id="msg"></div>
 </body>
 </html>
