@@ -86,3 +86,14 @@
     #time::after{
         content: '秒';
     }
+
+    #msg {
+    position: absolute;
+    top: 1000px;
+    left: 50px;
+    right: 50px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: darkblue;
+}
